@@ -1,4 +1,4 @@
-function goToPage(page) {
+export const goToPage = (page) => {
     document.querySelectorAll('.nav-item').forEach(i => {
         if (i.dataset.page === page) {
             i.classList.add('active');
@@ -15,6 +15,8 @@ function goToPage(page) {
 }
 
 function render(page) {
+    console.log('Rendering page:', page);
+    
     document.getElementById('page-title').textContent = {
         dashboard: 'Dashboard',
         invoices: 'Invoices',
