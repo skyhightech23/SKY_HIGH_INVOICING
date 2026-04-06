@@ -3,7 +3,6 @@ function goToPage(page){
     if( i.dataset.page === page ){
         i.classList.add('active');
         nav(i);
-        
     } else {
         i.classList.remove('active');
     }

@@ -16,9 +16,9 @@
     --text: #1A1917;
     --text2: #6B6860;
     --text3: #A09D98;
-    --accent: #1B6F4A;
-    --accent-light: #E6F4EE;
-    --accent-mid: #2A9768;
+    --main-color: #4B9CD3; /* UNC Blue */
+    ----main-color-light: #E6F4EE;
+    ----main-color-mid: #2A9768;
     --danger: #C0392B;
     --danger-light: #FDECEA;
     --warn: #B7791F;
@@ -64,7 +64,7 @@ textarea {
 input:focus,
 select:focus,
 textarea:focus {
-    border-color: var(--accent)
+    border-color: var(----main-color)
 }
 
 button {
@@ -153,7 +153,7 @@ h3 {
 }
 
 .nav-item.active {
-    background: var(--accent);
+    background: var(----main-color);
     color: #fff
 }
 
@@ -208,7 +208,7 @@ h3 {
 }
 
 .btn-primary {
-    background: var(--accent);
+    background: var(----main-color);
     color: #fff
 }
 
@@ -297,12 +297,12 @@ h3 {
 }
 
 .badge-paid {
-    background: var(--accent-light);
-    color: var(--accent)
+    background: var(----main-color-light);
+    color: var(----main-color)
 }
 
 .badge-paid::before {
-    background: var(--accent)
+    background: var(----main-color)
 }
 
 .badge-overdue {
@@ -660,7 +660,7 @@ h3 {
 }
 
 .toast-item.success {
-    background: var(--accent)
+    background: var(----main-color)
 }
 
 .toast-item.error {
@@ -687,7 +687,7 @@ h3 {
 .inv-preview .inv-title {
     font-size: 28px;
     font-weight: 700;
-    color: var(--accent);
+    color: var(----main-color);
     letter-spacing: -.5px
 }
 
@@ -718,7 +718,7 @@ h3 {
     color: var(--text3);
     text-transform: uppercase;
     letter-spacing: .05em;
-    border-bottom: 2px solid var(--accent);
+    border-bottom: 2px solid var(----main-color);
     padding: .375rem 0;
     text-align: left;
     font-weight: 500
