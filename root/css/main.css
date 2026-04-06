@@ -152,7 +152,7 @@ h3 {
 }
 
 .nav-item.active {
-    background: var(----main-color);
+    background: var(--main-color);
     color: #fff
 }
 
