@@ -188,7 +188,7 @@ h3 {
     color: var(--text)
 }
 
-#content {
+#viewContainer {
     flex: 1;
     overflow-y: auto;
     padding: 1.5rem
@@ -807,7 +807,7 @@ h3 {
         display: none !important
     }
 
-    #content {
+    #viewContainer {
         overflow: visible;
         padding: 0
     }
