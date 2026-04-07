@@ -5,11 +5,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sky High Invoicing</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/datatables.net-dt@1.13.8/css/jquery.dataTables.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link
         href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/main.css">
-    <script type="module" src="./js/index.js"></script>
+    <link rel="stylesheet" href="css/main.css?v=1.0.0">
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/datatables.net@1.13.8/js/jquery.dataTables.min.js"></script>
+    <script type="module" src="./js/index.js?v=1.0.0"></script>
 </head>
 
 <body>
@@ -92,7 +95,11 @@
                 <h2 id="page-title">Dashboard</h2>
                 <div id="topbar-actions"></div>
             </div>
-            <div id="viewContainer"></div>
+            <div id="viewContainer">
+                <div id="loader-container">
+                    <div class="spinner">Loading Data...</div>
+                </div>
+            </div>
         </div>
     </div>
 

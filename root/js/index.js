@@ -1,6 +1,8 @@
 import { initEventListeners } from './events.js';
 
-document.addEventListener('DOMContentLoaded', () => {
-  initEventListeners();
-  
+$(document).ready(() => {
+    initEventListeners();
+
+    //init dashboard view
+    
 });

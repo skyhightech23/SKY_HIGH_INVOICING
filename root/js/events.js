@@ -1,10 +1,10 @@
 import { goToView } from './handlers/ui.js';
 
 export const initEventListeners = () => {
-    const navItems = document.querySelectorAll('.nav-item');
+    const navItems = $('.nav-item');
 
-    navItems.forEach(item => {
-        item.addEventListener('click', function(){
+    navItems.each((i, item) => {
+        $(item).on('click', function(){
             goToView(this.dataset.view);
         });
     });

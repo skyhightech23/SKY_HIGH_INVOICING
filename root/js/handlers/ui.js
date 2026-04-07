@@ -1,3 +1,5 @@
+import { prepDashboardData } from "../dataPrep";
+
 /* Date: 04/06/26 
 *  currentView Object to hold any properties that I might need later. Currently jsut holding the view name. 
 */
@@ -22,49 +24,72 @@ export const goToView = (view) => {
     try {
         if (getCurrentView() === view) return;
 
-        document.querySelectorAll('.nav-item').forEach(i => {
-            if (i.dataset.view === view) {
-                i.classList.add('active');
-                
+        $('.nav-item').each((i, el) => {
+            if (el.dataset.view === view) {
+                $(el).addClass('active');
+
                 setCurrentView(view);
 
-                render(view);
+                renderView(view);
 
             } else {
-                i.classList.remove('active');
+                $(el).removeClass('active');
             }
-            
+
         });
-    } catch ( error ){
+    } catch (error) {
         //to-do: properly handle error, console log for now
         console.log('Error navigating to page:', error);
     }
-    
+
 
 }
 
-function render(view) {
-    console.log('Rendering view:', view);
-    
-    document.getElementById('page-title').textContent = viewList[view] || 'Unknown View';
+function renderView(view) {
+    $('#page-title').text(viewList[view] || 'Unknown View');
 
-    document.getElementById('topbar-actions').innerHTML = '';
+    $('#topbar-actions').html('');
 
     const views = {
-        dashboard: renderDashboard, 
+        dashboard: renderDashboard,
         invoices: renderInvoices,
-        customers: renderCustomers, 
+        customers: renderCustomers,
         products: renderProducts,
-        taxes: renderTaxes, 
+        taxes: renderTaxes,
         settings: renderSettings
     };
-    
+
     if (views[view]) views[view]();
 }
 
-function getCurrentView(){
+function getCurrentView() {
     return currentView.name;
 }
-function setCurrentView(view){
+function setCurrentView(view) {
     currentView.name = view;
+}
+
+/*
+* Flow: Get data for Dashboard View. Render stat cards at the top of the view port. Render Datatable with default data set to Overdue Invoices iff count
+* > 0, else default to Pending Invoices. 
+*/
+async function renderDashboard() {
+    try {
+        const viewContainer = $('#viewContainer');
+        
+        //to-do: replace with ajax once backend is set up
+        const dashboardData = prepDashboardData();
+
+        //stat-cards: Paid Invoices, Overdue Invoices, Amount Received, Pending Invoices, Recent Activity
+        const {paid, overdue, amount, pending, recent} = dashboardData;
+
+    } catch (error) {
+        //to-do: handle error , console log for now
+        console.log('Error rendering dashboard:', error);
+    }
+    
+}
+
+async function renderStatCardGrid(...statCards){
+
 }
