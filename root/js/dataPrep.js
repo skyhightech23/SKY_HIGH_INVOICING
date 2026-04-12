@@ -1,4 +1,4 @@
-import { OpenInvoices, PaidInvoices,  Customers} from "../../testData/JSON/invoicingData.js";
+import { OpenInvoices, PaidInvoices,  Customers} from "../../root/testData/JSON/invoicingData.js";
 
 export const prepDashboardData = () => {
     try {
