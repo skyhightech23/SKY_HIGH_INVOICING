@@ -75,21 +75,69 @@ function setCurrentView(view) {
 */
 async function renderDashboard() {
     try {
-        const viewContainer = $('#viewContainer');
-        
+        const viewContainer = $('#viewContainer').html('');
+
         //to-do: replace with ajax once backend is set up
         const dashboardData = prepDashboardData();
 
         //stat-cards: Paid Invoices, Overdue Invoices, Amount Received, Pending Invoices, Recent Activity
-        const {paid, overdue, amount, pending, recent} = dashboardData;
+        const { paid, overdue, amount, pending, recent } = dashboardData;
+
+        const statCards = [
+            {
+                title: 'Paid Invoices',
+                value: paidInvoices.length,
+                sub: `Invoices`
+            },
+            {
+                title: 'Overdue Invoices',
+                value: overdueInvoices.length,
+                sub: `${overdueInvoices.length} overdue`
+            },
+            {
+                title: 'Amount Received',
+                value: `$${amountReceived.toFixed(2)}`,
+                sub: 'Total received'
+            },
+            {
+                title: 'Pending Invoices',
+                value: pendingInvoices.length,
+                sub: `${pendingInvoices.length} pending or sent`
+            },
+            {
+                title: 'Recent Activity',
+                value: recentActivity.length,
+                sub: `${recentActivity.length} recent items`
+            }
+        ];
+
+        viewContainer.append(renderStatCardGrid(statCards));
 
     } catch (error) {
         //to-do: handle error , console log for now
         console.log('Error rendering dashboard:', error);
     }
-    
+
 }
 
-async function renderStatCardGrid(...statCards){
+async function renderStatCardGrid( statCards = [] ) {
+    const dashboardTemplate = document.getElementById('dashboard-view');
+    const statCardTemplate = document.getElementById('dashboard-stat-card');
 
+    if (!dashboardTemplate || !statCardTemplate) {
+        throw new Error('Missing dashboard templates in DOM');
+    }
+
+    const dashboardClone = dashboardTemplate.content.cloneNode(true);
+    const statGrid = dashboardClone.querySelector('.stats-grid-container');
+
+    statCards.forEach((card) => {
+        const cardClone = statCardTemplate.content.cloneNode(true);
+        cardClone.querySelector('.stat-label').textContent = card.title;
+        cardClone.querySelector('.stat-value').textContent = card.value;
+        cardClone.querySelector('.stat-sub').textContent = card.sub;
+        statGrid.appendChild(cardClone);
+    });
+
+    return dashboardClone;
 }
