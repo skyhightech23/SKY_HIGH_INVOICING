@@ -1,4 +1,4 @@
-import { prepDashboardData } from "./dataPrep.js";
+import { prepDashboardData } from "../dataPrep.js";
 
 /* Date: 04/06/26 
 *  currentView Object to hold any properties that I might need later. Currently jsut holding the view name. 
