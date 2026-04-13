@@ -1,6 +1,6 @@
 export class TemplateEngine {
     constructor() {
-        this.templates = [];
+        this.templates = new Set();
 
         this.loadTemplates();
     }
