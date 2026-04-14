@@ -17,7 +17,7 @@ export class TemplateEngine {
                     //cache busting template files
                     const response = await fetch(`./templates/${file}?v=${Date.now()}`);
                     const content = await response.text();
-                    this.templates.set(file, content);
+                    this.templates.add({ name: file, content });
                 } catch (error) {
                     console.error(`Error loading template ${file}:`, error);
                 }
