@@ -89,7 +89,7 @@ async function renderStatCardGrid( statCards = [] ) {
             NUM_INVOICES: card.numInvoices
         };
 
-        statCardHTML = templateEngineInstance.replacePlaceholders(statCardTemplateHTML, placeholders);
+        statCardHTML += templateEngineInstance.replacePlaceholders(statCardTemplateHTML, placeholders);
     });
 
     return statCardHTML;
