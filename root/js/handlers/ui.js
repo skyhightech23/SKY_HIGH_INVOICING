@@ -81,18 +81,18 @@ async function renderDashboard() {
         const dashboardData = prepDashboardData();
         console.log('Dashboard data: before spread', dashboardData);
         //stat-cards: Paid Invoices, Overdue Invoices, Amount Received, Pending Invoices, Recent Activity
-        const { paid, overdue, amount, pending, recent } = dashboardData;
-        console.log('Dashboard paid:', paid);
+        const { paidInvoices, overdueInvoices, amount, pendingInvoices, recentActivity } = dashboardData;
+        console.log('Dashboard paid:', paidInvoices);
         const statCards = [
             {
                 title: 'Paid Invoices',
-                value: paid.length,
+                value: paidInvoices.length,
                 sub: `Invoices`
             },
             {
                 title: 'Overdue Invoices',
-                value: overdue.length,
-                sub: `${overdue.length} overdue`
+                value: overdueInvoices.length,
+                sub: `${overdueInvoices.length} overdue`
             },
             {
                 title: 'Amount Received',
@@ -101,13 +101,13 @@ async function renderDashboard() {
             },
             {
                 title: 'Pending Invoices',
-                value: pending.length,
-                sub: `${pending.length} pending or sent`
+                value: pendingInvoices.length,
+                sub: `${pendingInvoices.length} pending or sent`
             },
             {
                 title: 'Recent Activity',
-                value: recent.length,
-                sub: `${recent.length} recent items`
+                value: recentActivity.length,
+                sub: `${recentActivity.length} recent items`
             }
         ];
 
