@@ -2,9 +2,35 @@ export class TemplateEngine {
     constructor() {
         this.templates = new Map();
         this.parser = new DOMParser();
-        this.templateIDs = {
-            dashboard: 'dashboard-view'
-        };
+        this.viewStatCards = {
+            dashboard: [
+                {
+                    title: 'Paid Invoices',
+                    value: paidInvoices.length,
+                    sub: `Invoices`
+                },
+                {
+                    title: 'Overdue Invoices',
+                    value: overdueInvoices.length,
+                    sub: `${overdueInvoices.length} overdue`
+                },
+                {
+                    title: 'Amount Received',
+                    value: `$${amountReceived.toFixed(2)}`,
+                    sub: 'Total received'
+                },
+                {
+                    title: 'Pending Invoices',
+                    value: pendingInvoices.length,
+                    sub: `${pendingInvoices.length} pending or sent`
+                },
+                {
+                    title: 'Recent Activity',
+                    value: recentActivity.length,
+                    sub: `${recentActivity.length} recent items`
+                }
+            ]
+        }
 
     }
 
@@ -35,6 +61,8 @@ export class TemplateEngine {
 
     }
 
+
+
     replacePlaceholders(template, variables) {
         let result = template;
         for (const [key, value] of Object.entries(variables)) {
@@ -44,18 +72,11 @@ export class TemplateEngine {
         return result;
     }
 
-    getTemplateHTML(templateFile, view){
-        const templateID = this.templateIDs[view];
-        let templateHTML = '';
+    getTemplateHTML(templateFile, options = {} ){
         const templateFileContent = this.parser.parseFromString(templateFile, 'text/html');
-        console.log('Template ID:', templateID);
-        switch( view ){
-            case 'dashboard':
-                templateHTML = templateFileContent.querySelector(`#${templateID}`).innerHTML;
-                break;
+        const templateID = options.templateID;
 
-        }
-        return templateHTML;
+        return templateFileContent.querySelector(`#${templateID}`).innerHTML;
     }
 }
 
