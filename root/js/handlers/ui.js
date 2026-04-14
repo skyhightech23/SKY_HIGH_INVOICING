@@ -59,14 +59,16 @@ function renderView(view) {
 */
 export async function renderDashboard( viewTemplateHTML ) {
     try {
+        //to-do: move this line to reset function
         const viewContainer = $('#viewContainer').html('');
         //to-do: replace with ajax once backend is set up
-        const dashboardData = prepDashboardData();
-        const { paidInvoices, overdueInvoices, amountReceived, pendingInvoices, recentActivity } = dashboardData;
-        const statCards = templateEngineInstance.viewStatCards.dashboard;
-        const statCardGridHTML = await renderStatCardGrid(statCards, viewTemplateHTML );
+        const statCards = prepDashboardData();
+        
+        const statCardGridHTML = await renderStatCardGrid( statCards );
 
+        const dashboardHTML = templateEngineInstance.replacePlaceholders(viewTemplateHTML, { STAT_CARDS: statCardGridHTML });
 
+        viewContainer.html(dashboardHTML);
 
     } catch (error) {
         //to-do: handle error , console log for now
@@ -75,13 +77,20 @@ export async function renderDashboard( viewTemplateHTML ) {
 
 }
 
-async function renderStatCardGrid( statCards = [], viewTemplateHTML ) {
+async function renderStatCardGrid( statCards = [] ) {
     const statCardTemplateFile = templateEngineInstance.templates.get('stat-card-templates.html');
     const statCardTemplateHTML = templateEngineInstance.getTemplateHTML(statCardTemplateFile, { templateID: currentView.statCardGridId });    
+    let statCardHTML = '';
 
     statCards.forEach( card => {
         const placeholders = {
+            CARD_TITLE: card.title,
+            CARD_VALUE: card.value,
+            NUM_INVOICES: card.numInvoices
+        };
 
-        }
+        statCardHTML = templateEngineInstance.replacePlaceholders(statCardTemplateHTML, placeholders);
     });
+
+    return statCardHTML;
 }

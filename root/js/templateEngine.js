@@ -2,35 +2,6 @@ export class TemplateEngine {
     constructor() {
         this.templates = new Map();
         this.parser = new DOMParser();
-        this.viewStatCards = {
-            dashboard: [
-                {
-                    title: 'Paid Invoices',
-                    value: paidInvoices.length,
-                    sub: `Invoices`
-                },
-                {
-                    title: 'Overdue Invoices',
-                    value: overdueInvoices.length,
-                    sub: `${overdueInvoices.length} overdue`
-                },
-                {
-                    title: 'Amount Received',
-                    value: `$${amountReceived.toFixed(2)}`,
-                    sub: 'Total received'
-                },
-                {
-                    title: 'Pending Invoices',
-                    value: pendingInvoices.length,
-                    sub: `${pendingInvoices.length} pending or sent`
-                },
-                {
-                    title: 'Recent Activity',
-                    value: recentActivity.length,
-                    sub: `${recentActivity.length} recent items`
-                }
-            ]
-        }
 
     }
 
