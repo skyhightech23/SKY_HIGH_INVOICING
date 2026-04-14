@@ -1,8 +1,8 @@
 export class TemplateEngine {
     constructor() {
-        this.templates = new Set();
+        this.templates = new Map();
+        this.parser = new DOMParser();
 
-        this.loadTemplates();
     }
 
     async loadTemplates() {
@@ -17,8 +17,9 @@ export class TemplateEngine {
                     //cache busting template files
                     const response = await fetch(`./templates/${file}?v=${Date.now()}`);
                     const content = await response.text();
-                    this.templates.add({ name: file, content });
-                    
+
+                    this.templates.set(file, content);
+
                 } catch (error) {
                     console.error(`Error loading template ${file}:`, error);
                 }
@@ -30,4 +31,12 @@ export class TemplateEngine {
         }
 
     }
+
+    getTemplateHTML(templateFile){
+        const templateHTML = this.templates.get(templateFile);
+        const doc = this.parser.parseFromString(templateHTML, 'text/html');
+        return doc;
+    }
 }
+
+export const templateEngineInstance = new TemplateEngine();

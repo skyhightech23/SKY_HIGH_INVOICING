@@ -1,4 +1,5 @@
 import { prepDashboardData } from "../dataPrep.js";
+import { templateEngineInstance } from "../templateEngine.js";
 
 /* Date: 04/06/26 
 *  currentView Object to hold any properties that I might need later. Currently jsut holding the view name. 
@@ -59,12 +60,18 @@ function renderView(view) {
         settings: renderSettings*/
     };
 
+    const viewTemplateFile = templateEngineInstance.templates.get('view-templates.html');
+    console.log('View Template File:', viewTemplateFile);
+    const viewTemplateHTML = templateEngineInstance.getTemplateHTML(viewTemplateFile);
+    console.log('View Template HTML:', viewTemplateHTML);
+
     if (views[view]) views[view]();
 }
 
 function getCurrentView() {
     return currentView.name;
 }
+
 function setCurrentView(view) {
     currentView.name = view;
 }
@@ -109,6 +116,7 @@ async function renderDashboard() {
                 sub: `${recentActivity.length} recent items`
             }
         ];
+
 
         viewContainer.append(renderStatCardGrid(statCards));
 
