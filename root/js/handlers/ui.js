@@ -62,7 +62,7 @@ function renderView(view) {
 
     const viewTemplateFile = templateEngineInstance.templates.get('view-templates.html');
     console.log('View Template File:', viewTemplateFile);
-    const viewTemplateHTML = templateEngineInstance.getTemplateHTML(viewTemplateFile);
+    const viewTemplateHTML = templateEngineInstance.getTemplateHTML(viewTemplateFile, view);
     console.log('View Template HTML:', viewTemplateHTML);
 
     if (views[view]) views[view]();

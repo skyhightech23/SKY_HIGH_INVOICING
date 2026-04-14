@@ -2,6 +2,9 @@ export class TemplateEngine {
     constructor() {
         this.templates = new Map();
         this.parser = new DOMParser();
+        this.templateIDs = {
+            dashboard: 'dashboard-view'
+        };
 
     }
 
@@ -32,10 +35,26 @@ export class TemplateEngine {
 
     }
 
-    getTemplateHTML(templateFile){
-        const templateHTML = this.templates.get(templateFile);
-        const doc = this.parser.parseFromString(templateHTML, 'text/html');
-        return doc;
+    replacePlaceholders(template, variables) {
+        let result = template;
+        for (const [key, value] of Object.entries(variables)) {
+            const regex = new RegExp(`\\[${key}\\]`, 'g');
+            result = result.replace(regex, value);
+        }
+        return result;
+    }
+
+    getTemplateHTML(templateFile, view){
+        const templateID = this.templateIDs[view]
+        let templateHTML = '';
+        console.log('Template ID:', templateID);
+        switch( view ){
+            case 'dashboard':
+                templateHTML = templateFile.querySelector(`#${templateID}`).innerHTML;
+                break;
+
+        }
+        return templateHTML;
     }
 }
 
