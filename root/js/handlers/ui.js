@@ -79,9 +79,9 @@ async function renderDashboard() {
 
         //to-do: replace with ajax once backend is set up
         const dashboardData = prepDashboardData();
-        console.log('Dashboard data: before spread', dashboardData);
-        //stat-cards: Paid Invoices, Overdue Invoices, Amount Received, Pending Invoices, Recent Activity
-        const { paidInvoices, overdueInvoices, amount, pendingInvoices, recentActivity } = dashboardData;
+        
+        
+        const { paidInvoices, overdueInvoices, amountReceived, pendingInvoices, recentActivity } = dashboardData;
         console.log('Dashboard paid:', paidInvoices);
         const statCards = [
             {
@@ -96,7 +96,7 @@ async function renderDashboard() {
             },
             {
                 title: 'Amount Received',
-                value: `$${amount.toFixed(2)}`,
+                value: `$${amountReceived.toFixed(2)}`,
                 sub: 'Total received'
             },
             {
