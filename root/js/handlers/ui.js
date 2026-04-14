@@ -52,11 +52,11 @@ function renderView(view) {
 
     const views = {
         dashboard: renderDashboard,
-        invoices: renderInvoices,
+        /*invoices: renderInvoices,
         customers: renderCustomers,
         products: renderProducts,
         taxes: renderTaxes,
-        settings: renderSettings
+        settings: renderSettings*/
     };
 
     if (views[view]) views[view]();
