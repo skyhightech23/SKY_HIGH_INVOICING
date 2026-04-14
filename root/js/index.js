@@ -2,7 +2,9 @@ import { initEventListeners } from './events.js';
 import  * as templateEngine from './templateEngine.js';
 
 $(document).ready(async () => {
-    await templateEngine.loadTemplates();
+    const templateEngineInstance = new templateEngine.TemplateEngine();
+
+    await templateEngineInstance.loadTemplates();
 
     initEventListeners();
 
