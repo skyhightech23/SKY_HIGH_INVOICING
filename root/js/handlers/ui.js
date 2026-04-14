@@ -80,9 +80,8 @@ async function renderDashboard() {
         //to-do: replace with ajax once backend is set up
         const dashboardData = prepDashboardData();
         
-        
         const { paidInvoices, overdueInvoices, amountReceived, pendingInvoices, recentActivity } = dashboardData;
-        console.log('Dashboard paid:', paidInvoices);
+        
         const statCards = [
             {
                 title: 'Paid Invoices',
