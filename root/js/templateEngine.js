@@ -18,6 +18,7 @@ export class TemplateEngine {
                     const response = await fetch(`./templates/${file}?v=${Date.now()}`);
                     const content = await response.text();
                     this.templates.add({ name: file, content });
+                    
                 } catch (error) {
                     console.error(`Error loading template ${file}:`, error);
                 }
