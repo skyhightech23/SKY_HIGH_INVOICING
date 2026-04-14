@@ -1,4 +1,4 @@
-export const OpenInvoices = [
+export const openInvoices = [
   {
     recordId: 1,
     invoiceNumber: 'INV-2026-001',
@@ -376,7 +376,7 @@ export const OpenInvoices = [
   }
 ];
 
-export const PaidInvoices = [
+export const paidInvoices = [
     {
         recordId: 997,
         invoiceNumber: 'INV-2025-997',
@@ -779,7 +779,7 @@ export const PaidInvoices = [
     }
 ];
 
-export const Customers = [
+export const customers = [
     {
         recordId: '000001',
         name: 'Global Tech Solutions',
