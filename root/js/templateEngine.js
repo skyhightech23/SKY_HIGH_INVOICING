@@ -45,12 +45,13 @@ export class TemplateEngine {
     }
 
     getTemplateHTML(templateFile, view){
-        const templateID = this.templateIDs[view]
+        const templateID = this.templateIDs[view];
         let templateHTML = '';
+        const templateFileContent = this.parser.parseFromString(templateFile, 'text/html');
         console.log('Template ID:', templateID);
         switch( view ){
             case 'dashboard':
-                templateHTML = templateFile.querySelector(`#${templateID}`).innerHTML;
+                templateHTML = templateFileContent.querySelector(`#${templateID}`).innerHTML;
                 break;
 
         }
