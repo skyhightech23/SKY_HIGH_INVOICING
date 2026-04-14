@@ -86,28 +86,28 @@ async function renderDashboard() {
         const statCards = [
             {
                 title: 'Paid Invoices',
-                value: paidInvoices.length,
+                value: paid.length,
                 sub: `Invoices`
             },
             {
                 title: 'Overdue Invoices',
-                value: overdueInvoices.length,
-                sub: `${overdueInvoices.length} overdue`
+                value: overdue.length,
+                sub: `${overdue.length} overdue`
             },
             {
                 title: 'Amount Received',
-                value: `$${amountReceived.toFixed(2)}`,
+                value: `$${amount.toFixed(2)}`,
                 sub: 'Total received'
             },
             {
                 title: 'Pending Invoices',
-                value: pendingInvoices.length,
-                sub: `${pendingInvoices.length} pending or sent`
+                value: pending.length,
+                sub: `${pending.length} pending or sent`
             },
             {
                 title: 'Recent Activity',
-                value: recentActivity.length,
-                sub: `${recentActivity.length} recent items`
+                value: recent.length,
+                sub: `${recent.length} recent items`
             }
         ];
 
