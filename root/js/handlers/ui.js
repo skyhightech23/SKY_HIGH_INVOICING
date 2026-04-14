@@ -82,7 +82,7 @@ async function renderDashboard() {
         console.log('Dashboard data: before spread', dashboardData);
         //stat-cards: Paid Invoices, Overdue Invoices, Amount Received, Pending Invoices, Recent Activity
         const { paid, overdue, amount, pending, recent } = dashboardData;
-        console.log('Dashboard data:', dashboardData);
+        console.log('Dashboard paid:', paid);
         const statCards = [
             {
                 title: 'Paid Invoices',
